@@ -1,14 +1,14 @@
 'use strict';
 
-import Electron from 'electron';
+const Electron = require('electron');
 const Application = Electron.app;
 const BrowserWindow = Electron.BrowserWindow;
 const EventEmitter = new(require('events')
   .EventEmitter)();
 
-import FileSystem from 'fs';
-import WatchJS from 'melanke-watchjs';
-import Shortcuts from 'electron-localshortcut';
+const FileSystem = require('fs');
+const WatchJS = require('melanke-watchjs');
+const Shortcuts = require('electron-localshortcut');
 
 var isQuitting = false;
 
