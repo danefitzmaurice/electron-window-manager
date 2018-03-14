@@ -156,14 +156,16 @@ Window.prototype.create = function(url) {
   this.object.on('closed', function() {
     console.log('Window "' + instance.name + '" was closed');
 
-    instance.object.removeAllListeners();
+    //instance.object.removeAllListeners();
 
-    instance.object = null;
+
     if (instance.setup.destroyOnClose) {
       delete windowManager.windows[instance.name];
-    } else if (!windowManager.isQuitting) {
-      instance.create();
     }
+    // else if (!windowManager.isQuitting) {
+    //   instance.create();
+    // }
+    instance.object = null;
     instance = null;
   });
 
