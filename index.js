@@ -158,12 +158,14 @@ Window.prototype.create = function(url) {
 
     instance.object.removeAllListeners();
 
-    instance.object = null;
+
     if (instance.setup.destroyOnClose) {
       delete windowManager.windows[instance.name];
-    } else if (!windowManager.isQuitting) {
-      instance.create();
     }
+    // else if (!windowManager.isQuitting) {
+    //   instance.create();
+    // }
+    instance.object = null;
     instance = null;
   });
 
@@ -176,31 +178,31 @@ Window.prototype.create = function(url) {
 // });
 
 Window.prototype.open = function(url, hide) {
-  // if (isObject(this.object)) {
-  //   this.focus();
-  //   return false;
-  // }
-  //
-  // this.create(url);
-  //
-  // if (!hide) {
-  //   this.object.show();
-  // }
-
   if (isObject(this.object)) {
-    if (!hide) {
-      this.object.show();
-      this.focus();
-    }
-  } else {
-    this.create(url);
-
-    this.onReady(true, window => {
-      if (!hide) {
-        window.object.show();
-      }
-    });
+    this.focus();
+    return false;
   }
+
+  this.create(url);
+
+  if (!hide) {
+    this.object.show();
+  }
+
+  // if (isObject(this.object)) {
+  //   if (!hide) {
+  //     this.object.show();
+  //     this.focus();
+  //   }
+  // } else {
+  //   this.create(url);
+
+  //   this.onReady(true, window => {
+  //     if (!hide) {
+  //       window.object.show();
+  //     }
+  //   });
+  // }
 };
 
 Window.prototype.focus = function() {
