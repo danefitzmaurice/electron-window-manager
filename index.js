@@ -138,7 +138,7 @@ Window.prototype.create = function(url) {
 
   //vm.webContents.on('will-navigate', handleRedirect);
 
-  this.object.on('ready-to-show', () => {
+  this.object.webContents.on('ready-to-show', () => {
     this.object.webContents.on('new-window', handleRedirect);
   });
 
