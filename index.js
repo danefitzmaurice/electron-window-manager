@@ -136,11 +136,7 @@ Window.prototype.create = function(url) {
     }
   };
 
-  //vm.webContents.on('will-navigate', handleRedirect);
-
-  this.object.webContents.on('ready-to-show', () => {
-    this.object.webContents.on('new-window', handleRedirect);
-  });
+  this.object.webContents.on('new-window', handleRedirect);
 
   this.object.webContents.on('did-fail-load', (ev, errorCode, errorDescription, validatedUrl, isMainFrame) => {
     //console.log('did-fail-load', a, b, c, d, e);
