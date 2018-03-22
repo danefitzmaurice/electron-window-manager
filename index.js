@@ -2,6 +2,7 @@
 
 const Electron = require('electron');
 const Application = Electron.app;
+const shell = Electron.shell;
 const BrowserWindow = Electron.BrowserWindow;
 const EventEmitter = new(require('events')
   .EventEmitter)();
