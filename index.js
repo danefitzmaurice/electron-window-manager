@@ -127,6 +127,21 @@ Window.prototype.create = function(url) {
 
   console.log('Window "' + this.name + '" was created');
 
+  var handleRedirect = (e, url) => {
+    console.log('new winndow');
+    if (url.includes('youtube')) {
+      e.preventDefault();
+      e.defaultPrevented = true;
+      shell.openExternal(url);
+    }
+  };
+
+  //vm.webContents.on('will-navigate', handleRedirect);
+
+  this.object.on('ready-to-show', () => {
+    this.object.webContents.on('new-window', handleRedirect);
+  });
+
   this.object.webContents.on('did-fail-load', (ev, errorCode, errorDescription, validatedUrl, isMainFrame) => {
     //console.log('did-fail-load', a, b, c, d, e);
     console.log('event that failed', ev);
