@@ -129,7 +129,6 @@ Window.prototype.create = function(url) {
   console.log('Window "' + this.name + '" was created');
 
   var handleRedirect = (e, url) => {
-    console.log('new winndow');
     if (url.includes('youtube')) {
       e.preventDefault();
       e.defaultPrevented = true;
